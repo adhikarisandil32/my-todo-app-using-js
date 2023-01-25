@@ -6,6 +6,7 @@ addTodoButton.addEventListener("click", () => {
     if (taskInput.value.trim() === ""){
         return
     }
+
     document.querySelector("tbody").appendChild(document.createElement("tr"));
     
     tableDataArray.push({
@@ -14,17 +15,15 @@ addTodoButton.addEventListener("click", () => {
         td3: '<i class="fa-solid fa-pen px-2">',
         td4: '<i class="fa-solid fa-trash px-2">'
     })
-    
 
-    tableDataArray.forEach((element, idx) => {
-        let tableRow = document.querySelectorAll("tbody > tr")[idx];
-        let count = 0;
-        for (key in element){
-            tableRow.appendChild(document.createElement("td"));
-            tableRow.children[count].innerHTML = element[key];
-            count++;
-        }
-    })
+    document.querySelector("tbody").lastElementChild.innerHTML = 
+    `
+        <td>${tableDataArray[tableDataArray.length-1].td1}</td>
+        <td>${tableDataArray[tableDataArray.length-1].td2}</td>
+        <td>${tableDataArray[tableDataArray.length-1].td3}</td>
+        <td>${tableDataArray[tableDataArray.length-1].td4}</td>
+    `;
 
-    console.log(document.querySelector("tbody").children);
+    taskInput.value = '';
+
 })
