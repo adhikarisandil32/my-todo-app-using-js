@@ -7,8 +7,10 @@ addTodoButton.addEventListener("click", () => {
         return
     }
 
+    //tbody creates a tr first.
     document.querySelector("tbody").appendChild(document.createElement("tr"));
     
+    //and then on the tableDataArray, the td info like number, task and edit and delete sign is pushed
     tableDataArray.push({
         td1: document.querySelector("tbody").children.length,
         td2: taskInput.value,
@@ -16,6 +18,7 @@ addTodoButton.addEventListener("click", () => {
         td4: '<i class="fa-solid fa-trash px-2">'
     })
 
+    //lastElementChild of tbody is the last tr where the td is pushed
     document.querySelector("tbody").lastElementChild.innerHTML = 
     `
         <td>${tableDataArray[tableDataArray.length-1].td1}</td>
@@ -24,6 +27,7 @@ addTodoButton.addEventListener("click", () => {
         <td>${tableDataArray[tableDataArray.length-1].td4}</td>
     `;
 
+    //the input form is then set to blank
     taskInput.value = '';
-
 })
+
